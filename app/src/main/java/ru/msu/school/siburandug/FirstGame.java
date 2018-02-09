@@ -1,4 +1,5 @@
 package ru.msu.school.siburandug;
+/*
 //ИМПРОТЫ:
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
@@ -83,8 +84,8 @@ public class FirstGame extends AppCompatActivity {
 
 }
 
-
-       /* import android.content.Intent;
+*/
+        import android.content.Intent;
         import android.content.SharedPreferences;
         import android.os.Bundle;
         import android.support.annotation.Nullable;
@@ -112,18 +113,19 @@ public class FirstGame extends AppCompatActivity implements View.OnClickListener
 
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().hide();
-
+        try {
+            getSupportActionBar().hide();
+        } catch(NullPointerException e) {}
         setContentView(R.layout.first_game_activity);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //Toast.makeText(FirstGame.this,"Деньги в варе = "+Var.money+"; в файле ="+sPref.getInt(MONEY, 0)+"!",Toast.LENGTH_SHORT).show();
 
-        btnFirstGameMoney = (Button)findViewById(R.id.btnFirstGameMoney);
+        btnFirstGameMoney = findViewById(R.id.btnFirstGameMoney);
         btnFirstGameMoney.setOnClickListener(this);
 
-        btnToMenu = (Button) findViewById(R.id.btnToMenu);
+        btnToMenu = findViewById(R.id.btnToMenu);
         btnToMenu.setOnClickListener(this);
 
 
@@ -156,7 +158,7 @@ public class FirstGame extends AppCompatActivity implements View.OnClickListener
             sPref = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
             SharedPreferences.Editor editor = sPref.edit();
             editor.putInt(TOTAL_MONEY, sPref.getInt(TOTAL_MONEY,0)+1);
-            editor.commit();
+            editor.apply();
         Toast.makeText(FirstGame.this,"Деньги в файле ="+sPref.getInt(TOTAL_MONEY, 0)+"!",Toast.LENGTH_SHORT).show();
     }
 
@@ -164,7 +166,7 @@ public class FirstGame extends AppCompatActivity implements View.OnClickListener
         sPref = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = sPref.edit();
         editor.putInt(TOTAL_MONEY, Var.money);
-        editor.commit();
+        editor.apply();
         Toast.makeText(FirstGame.this,"Деньги в варе = "+Var.money+"; в файле ="+sPref.getInt(TOTAL_MONEY, 0)+"!",Toast.LENGTH_SHORT).show();
     }
 
