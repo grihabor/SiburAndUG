@@ -1,0 +1,24 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker build . -t img
+  - docker run --name build img
+  - docker cp build:/project/app/build/outputs/apk/release/app-release-unsigned.apk .
+
+before_deploy:
+  - git config --local user.name "Borodin Gregory"
+  - git config --local user.email "grihabor@gmail.com"
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+
+deploy:
+  provider: releases
+  api_key: ${DEPLOY_TOKEN}
+  file: app-release-unsigned.apk
+  skip_cleanup: true 
+  on:
+    branch:
+      - master
+      - release
