@@ -6,12 +6,12 @@ services:
 script:
   - docker build . -t img
   - docker run --name build img
-  - docker cp build:/project/app/build/outputs/apk/release/app-release-unsigned.apk .
+  - docker cp build:/project/app/build/outputs/apk/debug/app-debug.apk .
 
 before_deploy:
   - git config --local user.name "Borodin Gregory"
   - git config --local user.email "grihabor@gmail.com"
-  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+  - git tag "$(date +'%Y-%m-%d_%H:%M:%S')_$(git log --format=%h -1)"
 
 deploy:
   provider: releases
