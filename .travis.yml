@@ -16,7 +16,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key: ${DEPLOY_TOKEN}
-  file: app-release-unsigned.apk
+  file: app-debug.apk
   skip_cleanup: true 
   on:
     branch:
