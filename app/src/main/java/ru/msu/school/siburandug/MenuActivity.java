@@ -73,14 +73,14 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initializeCurrentMoney() {
         sPref = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
-        if(checkIfAvaluable(2)==1){
-            if(checkIfAvaluable(3)==1){
-                if(checkIfAvaluable(4)==1){
-                    if(checkIfAvaluable(5)==1){
-                        if(checkIfAvaluable(6)==1){
-                            if(checkIfAvaluable(7)==1){
-                                if(checkIfAvaluable(8)==1){
-                                    if(checkIfAvaluable(9)==1){
+        if(checkIfAvailable(2)==1){
+            if(checkIfAvailable(3)==1){
+                if(checkIfAvailable(4)==1){
+                    if(checkIfAvailable(5)==1){
+                        if(checkIfAvailable(6)==1){
+                            if(checkIfAvailable(7)==1){
+                                if(checkIfAvailable(8)==1){
+                                    if(checkIfAvailable(9)==1){
                                         //деньги = тотал минус цена всех
                                         money = sPref.getInt(TOTAL_MONEY,0)-prices[7];
                                     } else money = sPref.getInt(TOTAL_MONEY,0)-prices[6];
@@ -112,6 +112,9 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+
+        String lowFundsMessage = "У вас недостаточно средств!";
+
         switch (view.getId()){
             case R.id.btnMoney:
 
@@ -126,51 +129,51 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.buttonGame2:
-                if(checkIfAvaluable(2) == 1){
+                if(checkIfAvailable(2) == 1){
                     startFirstGame();
-                } else Toast.makeText(this,"У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(this, lowFundsMessage, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonGame3:
-                if(checkIfAvaluable(3) == 1){
+                if(checkIfAvailable(3) == 1){
                     startFirstGame();
-                } else Toast.makeText(this,"У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(this, lowFundsMessage, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonGame4:
-                if(checkIfAvaluable(4) == 1){
+                if(checkIfAvailable(4) == 1){
                     startFirstGame();
-                } else Toast.makeText(this,"У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(this, lowFundsMessage, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonGame5:
-                if(checkIfAvaluable(5) == 1){
+                if(checkIfAvailable(5) == 1){
                     startFirstGame();
-                } else Toast.makeText(this,"У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(this, lowFundsMessage, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonGame6:
-                if(checkIfAvaluable(6) == 1){
+                if(checkIfAvailable(6) == 1){
                     startFirstGame();
-                } else Toast.makeText(this,"У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(this, lowFundsMessage, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonGame7:
-                if(checkIfAvaluable(7) == 1){
+                if(checkIfAvailable(7) == 1){
                     startFirstGame();
-                } else Toast.makeText(this,"У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(this, lowFundsMessage, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonGame8:
-                if(checkIfAvaluable(8) == 1){
+                if(checkIfAvailable(8) == 1){
                     startFirstGame();
-                } else Toast.makeText(this,"У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(this, lowFundsMessage, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonGame9:
-                if(checkIfAvaluable(9) == 1){
+                if(checkIfAvailable(9) == 1){
                     startFirstGame();
-                } else Toast.makeText(this,"У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(this, lowFundsMessage, Toast.LENGTH_SHORT).show();
                 break;
 
             default:
@@ -207,7 +210,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(MenuActivity.this,"Деньги в файле ="+sPref.getInt(TOTAL_MONEY, 0)+"! Отображаемые деньги = "+money+"!",Toast.LENGTH_SHORT).show();
     }
 
-    private int checkIfAvaluable(int n){
+    private int checkIfAvailable(int n){
         sPref = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         if(prices[n-2]<=sPref.getInt(TOTAL_MONEY,0)) {
             return 1;
