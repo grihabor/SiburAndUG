@@ -127,7 +127,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.buttonGame2:
                 if(checkIfAvaluable(2) == 1){
-                    startFirstGame();
+                    startSecondGame();
                 } else Toast.makeText(this,"У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
                 break;
 
@@ -180,6 +180,11 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+    }
+
+    private void startSecondGame() {
+        Intent intent = new Intent(MenuActivity.this, PlayActivity.class);
+        startActivity(intent);
     }
 
     private void nullMoney() {
