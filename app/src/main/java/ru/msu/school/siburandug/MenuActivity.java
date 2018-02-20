@@ -50,6 +50,11 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         btnNullMoney = (Button)findViewById(R.id.btnStartFirstGame);
         btnNullMoney.setOnClickListener(this);
 
+        GameButton[] gameButtons = new GameButton[9];
+        for (int i = 0; i < gameButtons.length; i += 1) {
+            (gameButtons[i]).id = (getResources().getStringArray(R.array.Buttonsids))[i];
+        }
+
         buttonGame1 = (Button)findViewById(R.id.buttonGame1);
         buttonGame1.setOnClickListener(this);
         buttonGame2 = (Button)findViewById(R.id.buttonGame2);
