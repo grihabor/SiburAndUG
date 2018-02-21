@@ -2,12 +2,16 @@ package ru.msu.school.siburandug;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
@@ -19,7 +23,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     public int money;
     Button btnMoney;
     Button btnNullMoney;
-    Button buttonGame1;
+    /*Button buttonGame1;
     Button buttonGame2;
     Button buttonGame3;
     Button buttonGame4;
@@ -27,7 +31,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonGame6;
     Button buttonGame7;
     Button buttonGame8;
-    Button buttonGame9;
+    Button buttonGame9;*/
 
 
     @Override
@@ -50,12 +54,26 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         btnNullMoney = (Button)findViewById(R.id.btnStartFirstGame);
         btnNullMoney.setOnClickListener(this);
 
-        GameButton[] gameButtons = new GameButton[9];
+        Button[] gameButtons = new Button[9];
+        Resources res = getResources();
+        LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayout);
         for (int i = 0; i < gameButtons.length; i += 1) {
-            (gameButtons[i]).id = (getResources().getStringArray(R.array.Buttonsids))[i];
+            (gameButtons[i]) = new Button(this);
+            /**/
+            //Toast.makeText(this,(gameButtons[i]).getX() + "", Toast.LENGTH_SHORT).show();
+            (gameButtons[i]).setText("kek " + i);
+            LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            //(gameButtons[i]).setLayoutParams(layoutParams);
+            layout.addView(gameButtons[i], layoutParams);
+            //int x = 100 + (i % 3)*200;
+            //int y = 100 + (i - (i % 3))*100;
+            /*(gameButtons[i]).setX(x);
+            (gameButtons[i]).setY(y);*/
+            //(gameButtons[i]).layout(x, y, 800 - x, 600 - y);
+
         }
 
-        buttonGame1 = (Button)findViewById(R.id.buttonGame1);
+        /*buttonGame1 = (Button)findViewById(R.id.buttonGame1);
         buttonGame1.setOnClickListener(this);
         buttonGame2 = (Button)findViewById(R.id.buttonGame2);
         buttonGame2.setOnClickListener(this);
@@ -72,7 +90,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         buttonGame8 = (Button)findViewById(R.id.buttonGame8);
         buttonGame8.setOnClickListener(this);
         buttonGame9 = (Button)findViewById(R.id.buttonGame9);
-        buttonGame9.setOnClickListener(this);
+        buttonGame9.setOnClickListener(this);*/
         //loadVar();
     }
 
@@ -126,7 +144,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 nullMoney();
                 break;
 
-            case R.id.buttonGame1:
+            /*case R.id.buttonGame1:
                 startFirstGame();
                 break;
 
@@ -176,7 +194,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 if(checkIfAvaluable(9) == 1){
                     startFirstGame();
                 } else Toast.makeText(this,"У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
-                break;
+                break;*/
 
             default:
                 Toast.makeText(this,"+", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="Buttonsids">
+    <string-array name="ButtonsIds">
         <item>Pyrolysis</item>
         <item>game2</item>
         <item>game3</item>
