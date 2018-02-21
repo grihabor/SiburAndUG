@@ -54,23 +54,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         btnNullMoney = (Button)findViewById(R.id.btnStartFirstGame);
         btnNullMoney.setOnClickListener(this);
 
-        Button[] gameButtons = new Button[9];
+        GameButton[] gameButtons = new GameButton[9];
         Resources res = getResources();
         LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayout);
-        for (int i = 0; i < gameButtons.length; i += 1) {
-            (gameButtons[i]) = new Button(this);
-            /**/
-            //Toast.makeText(this,(gameButtons[i]).getX() + "", Toast.LENGTH_SHORT).show();
-            (gameButtons[i]).setText("kek " + i);
-            LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-            //(gameButtons[i]).setLayoutParams(layoutParams);
-            layout.addView(gameButtons[i], layoutParams);
-            //int x = 100 + (i % 3)*200;
-            //int y = 100 + (i - (i % 3))*100;
-            /*(gameButtons[i]).setX(x);
-            (gameButtons[i]).setY(y);*/
-            //(gameButtons[i]).layout(x, y, 800 - x, 600 - y);
 
+        for (int i = 0; i < gameButtons.length; i += 1) {
+            (gameButtons[i]) = new GameButton(this, layout, i, res);
         }
 
         /*buttonGame1 = (Button)findViewById(R.id.buttonGame1);

@@ -17,16 +17,12 @@ public class GameButton extends android.support.v7.widget.AppCompatButton{
         super(context);
     }
 
-    public GameButton (Context context, int i, Resources resources) {
+    public GameButton (Context context, LinearLayout layout, int i, Resources resources) {
         super(context);
         id = (resources.getStringArray(R.array.ButtonsIds))[i];
-        /*int num = resources.getIdentifier("Pyrolysis", "string", "ru.msu.school.siburandug");
-        System.out.println(resources.getString(num));*/
-        setX (100 + (i % 3)*200);
-        setY (100 + (i - (i % 3))*100);
-
         setText(id);
-        setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+        layout.addView(this, layoutParams);
 
     }
 }
