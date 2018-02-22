@@ -3,15 +3,12 @@ package ru.msu.school.siburandug;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
@@ -21,8 +18,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     final static String TOTAL_MONEY = "total_money";
     final static String MY_PREFERENCES = "my preferences";
     public int money;
-    Button btnMoney;
-    Button btnNullMoney;
+    //Button btnMoney;
+    //Button btnNullMoney;
     /*Button buttonGame1;
     Button buttonGame2;
     Button buttonGame3;
@@ -41,22 +38,22 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
         getSupportActionBar().hide();
 
-        setContentView(R.layout.activity_menu);
-
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         initializeCurrentMoney();
 
-
-        btnMoney = (Button)findViewById(R.id.btnMoney);
-        btnMoney.setOnClickListener(this);
-
-
-        btnNullMoney = (Button)findViewById(R.id.btnStartFirstGame);
-        btnNullMoney.setOnClickListener(this);
-
         GameButton[] gameButtons = new GameButton[9];
         Resources res = getResources();
-        LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayout);
+        ConstraintLayout layout = new ConstraintLayout(this);
+        layout.setId(R.id.mainLayout);
+        setContentView(layout);
+
+        /*btnMoney = findViewById(R.id.btnMoney);
+        btnMoney.setOnClickListener(this);
+        layout.addView(btnMoney);*/
+
+        /*btnNullMoney = findViewById(R.id.btnMoney);
+        btnNullMoney.setOnClickListener(this);
+        layout.addView(btnNullMoney);*/
 
         for (int i = 0; i < gameButtons.length; i += 1) {
             (gameButtons[i]) = new GameButton(this, layout, i, res);
@@ -125,13 +122,13 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnMoney:
+            /*case R.id.btnMoney:
 
                 plusMoney();
                 break;
-            case R.id.btnStartFirstGame:
+            case R.id.btnNullMoney:
                 nullMoney();
-                break;
+                break;*/
 
             /*case R.id.buttonGame1:
                 startFirstGame();
