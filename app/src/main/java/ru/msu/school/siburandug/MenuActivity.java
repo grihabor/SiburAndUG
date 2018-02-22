@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.Toast;
 
 
@@ -20,21 +21,14 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     public int money;
     //Button btnMoney;
     //Button btnNullMoney;
-    /*Button buttonGame1;
-    Button buttonGame2;
-    Button buttonGame3;
-    Button buttonGame4;
-    Button buttonGame5;
-    Button buttonGame6;
-    Button buttonGame7;
-    Button buttonGame8;
-    Button buttonGame9;*/
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_menu);
 
         getSupportActionBar().hide();
 
@@ -43,9 +37,10 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
         GameButton[] gameButtons = new GameButton[9];
         Resources res = getResources();
-        ConstraintLayout layout = new ConstraintLayout(this);
-        layout.setId(R.id.mainLayout);
-        setContentView(layout);
+        GridLayout layout = (GridLayout)findViewById(R.id.grid);
+        layout.setId(View.generateViewId());
+        layout.setColumnCount(3);
+        layout.setRowCount(3);
 
         /*btnMoney = findViewById(R.id.btnMoney);
         btnMoney.setOnClickListener(this);
@@ -59,25 +54,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             (gameButtons[i]) = new GameButton(this, layout, i, res);
         }
 
-        /*buttonGame1 = (Button)findViewById(R.id.buttonGame1);
-        buttonGame1.setOnClickListener(this);
-        buttonGame2 = (Button)findViewById(R.id.buttonGame2);
-        buttonGame2.setOnClickListener(this);
-        buttonGame3 = (Button)findViewById(R.id.buttonGame3);
-        buttonGame3.setOnClickListener(this);
-        buttonGame4 = (Button)findViewById(R.id.buttonGame4);
-        buttonGame4.setOnClickListener(this);
-        buttonGame5 = (Button)findViewById(R.id.buttonGame5);
-        buttonGame5.setOnClickListener(this);
-        buttonGame6 = (Button)findViewById(R.id.buttonGame6);
-        buttonGame6.setOnClickListener(this);
-        buttonGame7 = (Button)findViewById(R.id.buttonGame7);
-        buttonGame7.setOnClickListener(this);
-        buttonGame8 = (Button)findViewById(R.id.buttonGame8);
-        buttonGame8.setOnClickListener(this);
-        buttonGame9 = (Button)findViewById(R.id.buttonGame9);
-        buttonGame9.setOnClickListener(this);*/
-        //loadVar();
     }
 
     private void initializeCurrentMoney() {
