@@ -16,8 +16,8 @@ import android.widget.Toast;
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener{
     final static int[] prices= {20, 30, 40, 50, 60, 70, 80, 90}; //цена энного завода - СУММА всех заводов до него!
     SharedPreferences sPref;
-    final static String TOTAL_MONEY = "total_money";
-    final static String MY_PREFERENCES = "my preferences";
+    public final static String TOTAL_MONEY = "total_money";
+    public final static String MY_PREFERENCES = "my preferences";
     public int money;
     //Button btnMoney;
     //Button btnNullMoney;
@@ -30,12 +30,27 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_menu);
 
+        sPref = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
+
         getSupportActionBar().hide();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         initializeCurrentMoney();
 
         GameButton[] gameButtons = new GameButton[9];
+
+        ButtonData[] buttonData = new ButtonData[9];
+
+        buttonData[0] = new ButtonData("FirstGame", 0, "Pyrolysis", "1");
+        buttonData[1] = new ButtonData("FirstGame", 20, "Game2", "2");
+        buttonData[2] = new ButtonData("FirstGame", 30, "Game3", "3");
+        buttonData[3] = new ButtonData("FirstGame", 40, "Game4", "4");
+        buttonData[4] = new ButtonData("FirstGame", 50, "Game5", "5");
+        buttonData[5] = new ButtonData("FirstGame", 60, "Game6", "6");
+        buttonData[6] = new ButtonData("FirstGame", 70, "Game7", "7");
+        buttonData[7] = new ButtonData("FirstGame", 80, "Game8", "8");
+        buttonData[8] = new ButtonData("FirstGame", 90, "Game9", "9");
+
         Resources res = getResources();
         GridLayout layout = (GridLayout)findViewById(R.id.grid);
         layout.setId(View.generateViewId());
@@ -51,13 +66,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         layout.addView(btnNullMoney);*/
 
         for (int i = 0; i < gameButtons.length; i += 1) {
-            (gameButtons[i]) = new GameButton(this, layout, i, res);
+            (gameButtons[i]) = new GameButton(this, layout, sPref, i, buttonData[i]);
         }
 
     }
 
     private void initializeCurrentMoney() {
-        sPref = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         if(checkIfAvaluable(2)==1){
             if(checkIfAvaluable(3)==1){
                 if(checkIfAvaluable(4)==1){
