@@ -33,6 +33,7 @@ public class GameButton extends android.support.v7.widget.AppCompatButton implem
         this.context = context;
         this.textId = data.textId;
         Available = sPref.getBoolean(textId, false);
+        this.className = data.className;
 
         int ButtonLayoutId = View.generateViewId();
         this.setId(ButtonLayoutId);
@@ -59,7 +60,7 @@ public class GameButton extends android.support.v7.widget.AppCompatButton implem
                 editor.putBoolean(textId, true);
                 Toast.makeText(context, "Спасибо за покупку!", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(context, "У вас недостаточно средств!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "У вас недостаточно средств! Цена " + money, Toast.LENGTH_SHORT).show();
             }
         }
         else {

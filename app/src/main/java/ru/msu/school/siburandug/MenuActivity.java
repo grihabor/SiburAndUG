@@ -31,15 +31,15 @@ public class MenuActivity extends AppCompatActivity {
 
         ButtonData[] buttonData = new ButtonData[9];
 
-        buttonData[0] = new ButtonData(FirstGame.class.getName(), 0, "Pyrolysis", "1");
-        buttonData[1] = new ButtonData(FirstGame.class.getName(), 20, "Game2", "2");
-        buttonData[2] = new ButtonData(FirstGame.class.getName(), 30, "Game3", "3");
-        buttonData[3] = new ButtonData(FirstGame.class.getName(), 40, "Game4", "4");
-        buttonData[4] = new ButtonData(FirstGame.class.getName(), 50, "Game5", "5");
-        buttonData[5] = new ButtonData(FirstGame.class.getName(), 60, "Game6", "6");
-        buttonData[6] = new ButtonData(FirstGame.class.getName(), 70, "Game7", "7");
-        buttonData[7] = new ButtonData(FirstGame.class.getName(), 80, "Game8", "8");
-        buttonData[8] = new ButtonData(FirstGame.class.getName(), 90, "Game9", "9");
+        buttonData[0] = new ButtonData(FirstGame.class.getCanonicalName(), 0, "Pyrolysis", "1");
+        buttonData[1] = new ButtonData(FirstGame.class.getCanonicalName(), 20, "Game2", "2");
+        buttonData[2] = new ButtonData(FirstGame.class.getCanonicalName(), 30, "Game3", "3");
+        buttonData[3] = new ButtonData(FirstGame.class.getCanonicalName(), 40, "Game4", "4");
+        buttonData[4] = new ButtonData(FirstGame.class.getCanonicalName(), 50, "Game5", "5");
+        buttonData[5] = new ButtonData(FirstGame.class.getCanonicalName(), 60, "Game6", "6");
+        buttonData[6] = new ButtonData(FirstGame.class.getCanonicalName(), 70, "Game7", "7");
+        buttonData[7] = new ButtonData(FirstGame.class.getCanonicalName(), 80, "Game8", "8");
+        buttonData[8] = new ButtonData(FirstGame.class.getCanonicalName(), 90, "Game9", "9");
 
         Resources res = getResources();
         GridLayout layout = (GridLayout)findViewById(R.id.grid);
