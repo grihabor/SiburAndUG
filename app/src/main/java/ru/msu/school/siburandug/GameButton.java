@@ -1,18 +1,12 @@
 package ru.msu.school.siburandug;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
-import android.util.AttributeSet;
 import android.widget.GridLayout.LayoutParams;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.Toast;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Created by Олег Демьянченко on 20.02.2018.
@@ -69,8 +63,13 @@ public class GameButton extends android.support.v7.widget.AppCompatButton implem
             }
         }
         else {
-            editor.putInt(MenuActivity.TOTAL_MONEY, money + 5);
-            Toast.makeText(context, "У вас " + money + " сибуриков", Toast.LENGTH_SHORT).show();
+
+            try {
+                Intent intent = new Intent (context, Class.forName(className));
+                context.startActivity(intent);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
         editor.apply();
