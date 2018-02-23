@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ButtonsIds">
+        <item>pyrolysis</item>
+        <item>game2</item>
+        <item>game3</item>
+        <item>game4</item>
+        <item>game5</item>
+        <item>game6</item>
+        <item>game7</item>
+        <item>game8</item>
+        <item>game9</item>
+    </string-array>
+</resources>
