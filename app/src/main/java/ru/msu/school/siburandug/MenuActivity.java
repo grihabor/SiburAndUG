@@ -48,7 +48,12 @@ public class MenuActivity extends AppCompatActivity {
         layout.setRowCount(3);
 
         for (int i = 0; i < gameButtons.length; i += 1) {
-            (gameButtons[i]) = new GameButton(this, layout, sPref, i, buttonData[i]);
+            (gameButtons[i]) = new GameButton(this);
+            (gameButtons[i]).SetButtonData(buttonData[i]);
+            (gameButtons[i]).SetPosition(i);
+            (gameButtons[i]).SetSharedPreference(sPref);
+            (gameButtons[i]).CheckAccess();
+            layout.addView(gameButtons[i]);
         }
 
     }

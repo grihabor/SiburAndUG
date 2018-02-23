@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.GridLayout;
 import android.widget.Toast;
 
-/**
- * Created by Олег Демьянченко on 20.02.2018.
+/*
+  Created by Oleg Demianchenko on 20.02.2018.
  */
 
 public class GameButton extends android.support.v7.widget.AppCompatButton implements View.OnClickListener {
@@ -20,32 +20,33 @@ public class GameButton extends android.support.v7.widget.AppCompatButton implem
     Context context;
     boolean Available;
 
-    public GameButton(Context context) {
-        super(context);
-    }
-
-    public GameButton (Context context, GridLayout layout, SharedPreferences sPref, int i, ButtonData data) {
+    public GameButton (Context context) {
         super(context);
 
-        Price = data.Price;
-        setText(data.text);
-        this.sPref = sPref;
         this.context = context;
-        this.textId = data.textId;
-        Available = sPref.getBoolean(textId, false);
-        this.className = data.className;
-
-        int ButtonLayoutId = View.generateViewId();
-        this.setId(ButtonLayoutId);
-
-        this.setBackgroundResource(Available ? R.color.colorAvailable : R.color.colorUnavailable);
-
-        LayoutParams layoutParams = new LayoutParams(GridLayout.spec((i - (i%3))/3), GridLayout.spec(i % 3));
-        setLayoutParams(layoutParams);
-
-        layout.addView(this);
 
         setOnClickListener(this);
+    }
+
+    void SetPosition (int i) {
+        LayoutParams layoutParams = new LayoutParams(GridLayout.spec((i - (i%3))/3), GridLayout.spec(i % 3));
+        setLayoutParams(layoutParams);
+    }
+
+    void SetButtonData (ButtonData data) {
+        Price = data.Price;
+        setText(data.text);
+        this.textId = data.textId;
+        this.className = data.className;
+    }
+
+    void SetSharedPreference (SharedPreferences sPref) {
+        this.sPref = sPref;
+    }
+
+    void CheckAccess () {
+        Available = sPref.getBoolean(textId, false);
+        this.setBackgroundResource(Available ? R.color.colorAvailable : R.color.colorUnavailable);
     }
 
     @Override
